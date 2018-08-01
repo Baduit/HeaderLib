@@ -1,0 +1,1 @@
+# déplacer les fichiers/dossiers spécifiés dans le dossier d'instalation de la lib (surement /usr/local/lib)
