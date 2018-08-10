@@ -1,5 +1,6 @@
+#!/usr/bin/env ruby
 def is_writtable(line)
-	if (line.start_with?("#pragma once") || line.start_with?("#include \"")) then
+	if (line.start_with?("#pragma once") || line.start_with?("#include \"")) || line.start_with?("#include\t\"") then
 		return false
 	end
 	return true
@@ -12,21 +13,42 @@ def handle_header_file(filename, output)
 		if is_writtable(line) then
 			output.write(line)
 		end
-	
 	}
 end
 
-# à faire: gestion des arguments
-# -f ou --file => fichier à charger pour l'input
-# -o ou --outout => ficher destination
-# le reste, nom des fichiers à charger
-output = File.new("./unique_header/ScriptCaller.hpp", File::CREAT | File::RDWR)
+
+arg_type = "INPUT_FILE"
+output_filename = "lib.hpp"
+headers = []
+
+ARGV.each do|a|
+	if a == "-f" || a == "--file" then
+		arg_type = "INPUT_FILE_LIST"
+	elsif a == "-o" || a == "--output" then
+		arg_type = "OUTPUT_FILE"
+	elsif arg_type == "INPUT_FILE" then
+		headers.push(a)
+	elsif arg_type == "INPUT_FILE_LIST" then
+		flist = File.open(a)
+		flist.each_line {|l|
+			l = l.chomp
+			if !l.empty? then
+				headers.push(l)
+			end
+		}
+		arg_type = "INPUT_FILE"
+	elsif arg_type == "OUTPUT_FILE" then
+		output_filename = a
+		arg_type = "INPUT_FILE"
+	end
+end
+
+output = File.new(output_filename, File::CREAT | File::RDWR)
 output.write("#pragma once")
 
-f = File.open("./file_list.txt")
-f.each_line {|line|
+headers.each do |line|
 	line = line.chomp
 	if !line.empty? then 
 		handle_header_file(line, output)
 	end
-}
+end

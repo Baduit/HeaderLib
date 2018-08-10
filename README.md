@@ -1,2 +1,2 @@
 # HeaderLib
-A tool to create, share and install easily a c/c++ header only library.
+A tool to create and share easily a c/c++ header only library.
