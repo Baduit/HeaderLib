@@ -9,14 +9,14 @@ end
 def handle_header_file(filename, output)
 	header_file = File.open(filename)
 	
-	header_file.each_line { |line|
+	header_file.each_line do |line|
 		if is_writtable(line) then
 			output.write(line)
 		end
-	}
+	end
 end
 
-
+# well i think i should use an enum instead, it would be cleaner
 arg_type = "INPUT_FILE"
 output_filename = "lib.hpp"
 headers = []
@@ -30,12 +30,12 @@ ARGV.each do|a|
 		headers.push(a)
 	elsif arg_type == "INPUT_FILE_LIST" then
 		flist = File.open(a)
-		flist.each_line {|l|
+		flist.each_line do |l|
 			l = l.chomp
 			if !l.empty? then
 				headers.push(l)
 			end
-		}
+		end
 		arg_type = "INPUT_FILE"
 	elsif arg_type == "OUTPUT_FILE" then
 		output_filename = a

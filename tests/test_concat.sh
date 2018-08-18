@@ -1,0 +1,1 @@
+../scripts/concatenate.rb --file file_list.txt -o ../unique_header/lib.hpp && g++ test_concatenate.cpp

@@ -9,3 +9,6 @@ struct yolol
 {
 	std::string plop;
 };
+
+#include "dir/essaie.hpp"
+#include "dir/essaie.hpp"

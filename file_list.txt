@@ -1,5 +1,0 @@
-tests_assets/y_u_do_dis.hpp
-tests_assets/plop.hpp
-tests_assets/ip.hpp
-tests_assets/yolol.hpp
-
