@@ -17,10 +17,10 @@ Be carefull, the order of the headers can be important if there are depedencies.
 
 ## How does it work?
 ### concatenate.rb
-It just read the headers given in argument, remove the lines with __#pragma once__ and the local includes (example __#include "example.hpp"__).
+It just reads the headers given in argument, removes the lines with __#pragma once__ and the local includes (example __#include "example.hpp"__).
 
 ### smart_concatenate.rb
-It just read the headers given in argument, remove the lines with __#pragma once__ but instead of removing the line with the local includes, it reads and add the local includes. There is also a security to not use twice the same header.
+It just reads the headers given in argument, removes the lines with __#pragma once__ but instead of removing the line with the local includes, it reads and add the local includes. There is also a security to not use twice the same header.
 
 ## The tests
 If you are on unix go to the directory __tests__ and execute the scrit __test.sh__.
