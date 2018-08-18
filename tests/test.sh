@@ -1,1 +1,1 @@
-rm ../unique_header/* ; ./test_concat.sh && ./test_smart_concat.sh && rm a.out
+rm ../unique_header/* ; ./test_concat.sh && ./test_smart_concat.sh && rm a.out && echo "Apparently none of the test failed"
